@@ -35,8 +35,8 @@ function agregarCurso(e){
 function eliminarCurso(e){
     if(e.target.classList.contains("borrar-curso")){
         const cursoId = e.target.getAttribute("data-id");
-
         // Elimina del arreglo por el dataid
+        
         articulosCarrito = articulosCarrito.filter(curso => curso.id !== cursoId);
         carritoHTML();
     }
