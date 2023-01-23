@@ -1,4 +1,4 @@
-.class Cliente {
+class Cliente {
 
     #nombre;
 
