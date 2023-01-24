@@ -4,7 +4,7 @@ function crearIterador(carrito){
     return{
         siguiente: ()=>{
             const fin = (i >=carrito.length);
-            const valor = fin ? carrito[i++] : undefined;
+            const valor = !fin ? carrito[i++] : undefined;
             return{
                 fin,
                 valor
