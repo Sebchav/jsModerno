@@ -106,6 +106,13 @@ class UI {
         //Leer el contenido de la base de datos
         const objectStore = DB.transaction("citas").objectStore("citas");
 
+        const fnTextoHeading = this.textoHeading;
+
+        const total = objectStore.count();
+        total.onsuccess = function(){
+           fnTextoHeading(total.result)
+        }
+
         objectStore.openCursor().onsuccess = function(e){
             const cursor = e.target.result;
 
@@ -162,7 +169,7 @@ class UI {
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
           </svg>  
             `
-
+            const cita = cursor.value;
             btnEditar.onclick = ()=> cargarEdicion(cita);
 
             //Agregar parrafos al div Cita
@@ -185,8 +192,8 @@ class UI {
 
    }
 
-   textoHeading(citas) {
-        if(citas.length > 0 ) {
+   textoHeading(resultado) {
+        if(resultado > 0 ) {
             heading.textContent = 'Administra tus Citas '
         } else {
             heading.textContent = 'No hay Citas, comienza creando una'
@@ -220,11 +227,23 @@ function nuevaCita(e) {
         // Estamos editando
         administrarCitas.editarCita( {...citaObj} );
 
-        ui.imprimirAlerta('Guardado Correctamente');
+        //Edita en in indexedDB
+        const transaction = DB.transaction(["citas"], "readwrite");
+        const objectStore = transaction.objectStore("citas");
 
-        formulario.querySelector('button[type="submit"]').textContent = 'Crear Cita';
+        objectStore.put(citaObj);
 
-        editando = false;
+        transaction.oncomplete = ()=>{
+            ui.imprimirAlerta('Guardado Correctamente');
+
+            formulario.querySelector('button[type="submit"]').textContent = 'Crear Cita';
+
+            editando = false;
+        }
+
+        transaction.onerror = ()=>{
+            console.log("Hubo un error")
+        }
 
     } else {
         // Nuevo Registro
@@ -276,11 +295,20 @@ function reiniciarObjeto() {
     citaObj.sintomas = '';
 }
 
-
 function eliminarCita(id) {
-    administrarCitas.eliminarCita(id);
+    
+    const transaction = DB.transaction(["citas"], "readwrite");
+    const objectStore = transaction.objectStore("citas");
+    objectStore.delete(id);
 
-    ui.imprimirCitas()
+    transaction.oncomplete = ()=>{
+        console.log(`Cita ${id} eliminada...`)
+        ui.imprimirCitas()
+    }
+
+    transaction.onerror = ()=>{
+        console.log("Hubo un error");
+    }
 }
 
 function cargarEdicion(cita) {
