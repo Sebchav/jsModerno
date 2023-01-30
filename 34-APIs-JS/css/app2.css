@@ -1,0 +1,57 @@
+html{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: rgb(204, 244, 252);
+}
+#salida {
+    
+    padding:10px;
+    width: 100%;
+    margin-top:3px;
+    line-height:20px;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    font-weight: 300;
+    text-align: center;
+}
+
+#microfono{
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    width: 30%;
+    height: 70px;
+    font-size: 20px;
+    background-color: rgb(226, 68, 68);
+    color: white;
+    text-decoration: none;
+    -webkit-box-shadow: 1px 0px 8px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 0px 8px 0px rgba(0,0,0,0.75);
+box-shadow: 1px 0px 8px 0px rgba(0,0,0,0.75);
+    border: none;
+    
+    
+}
+
+.principal{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+.imagen{
+    width: 50%;
+    align-self: center;
+    border-radius: 20px;
+}

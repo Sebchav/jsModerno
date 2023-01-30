@@ -11,7 +11,7 @@ function ejecutarSpeechAPI(){
 
     recognition.onstart = function(){
         salida.classList.add("mostrar");
-        salida.textContent = "Escuchando...";
+        salida.innerHTML = "<br> <b>Escuchando...</b>";
     };
 
     recognition.onspeechend = function(){
@@ -22,14 +22,27 @@ function ejecutarSpeechAPI(){
     recognition.onresult = function(e){
         console.log(e.results[0][0]);
 
-        const {confidence, transcript} = e.results[0][0];
+        const {transcript} = e.results[0][0];
 
         const speech = document.createElement("p");
-        speech.innerHTML = `Grabado: ${transcript}`;
+        speech.innerHTML = `<b>Grabado:</b> ${transcript}`;
 
-        const seguridad = document.createElement("p");
-        seguridad.innerHTML = `Seguridad: ${parseInt(confidence * 100)}%`
         salida.appendChild(speech);
-        salida.appendChild(seguridad);
+
+        if(transcript.toLowerCase() === "preciosa"){
+            const respuesta = document.createElement("p");
+            respuesta.innerHTML = `<b>Respuesta:</b> Hola piciosa! si estás viendo esto significa que este pequeño programa funcionó JAJA 
+            y quiero aprovechar para decirte que eres una mujer increíble, maravillosa, única y muy especial. No te imaginas el gran
+            cariño que te tengo, en serio te quiero demasiado. También quiero decir que estás bien preciosa OMG, que niña tan más
+            chula eres <3 <br><br> Gracias por tanto NIÑA PRECIOSA! <br><br> La verdad si me gustas y me encantas demasiado &#128147
+            <br><br>`;
+            const imagen = document.createElement("img");
+            imagen.src = 'img/cyc.jpg';
+            imagen.classList.add("imagen");
+            
+            salida.appendChild(respuesta);
+            salida.appendChild(imagen);
+        }
+        
     }
 }
