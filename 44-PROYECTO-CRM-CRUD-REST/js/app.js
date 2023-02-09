@@ -49,3 +49,5 @@ import { obtenerClientes, eliminarCliente } from "./API.js"
         }
     }
 })();
+
+//json-server db.json -p 4000
