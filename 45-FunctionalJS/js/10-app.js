@@ -1,37 +1,63 @@
-const obtenerNombre = info =>({
-    mostrarNombre(){
-        console.log(`Nombre: ${info.nombre}`)
-    }
-})
+// const obtenerNombre = info =>({
+//     mostrarNombre(){
+//         console.log(`Nombre: ${info.nombre}`)
+//     }
+// })
 
-function Cliente(nombre, email, empresa){
-    let info = {
-        nombre,
-        email,
-        empresa
-    }
+// function Cliente(nombre, email, empresa){
+//     let info = {
+//         nombre,
+//         email,
+//         empresa
+//     }
 
-    return Object.assign(
-        info,
-        obtenerNombre(info)
-    )
-}
+//     return Object.assign(
+//         info,
+//         obtenerNombre(info)
+//     )
+// }
 
-function Empleado(nombre, email, puesto){
-    let info = {
-        nombre,
-        email,
-        puesto
-    }
+// function Empleado(nombre, email, puesto){
+//     let info = {
+//         nombre,
+//         email,
+//         puesto
+//     }
 
-    return Object.assign(
-        info,
-        obtenerNombre(info)
-    )
-}
+//     return Object.assign(
+//         info,
+//         obtenerNombre(info)
+//     )
+// }
 
-const cliente = Cliente("Juan", "correo@correo", "Código con Juan");
+// const cliente = Cliente("Juan", "correo@correo", "Código con Juan");
 
-cliente.mostrarNombre();
-const empleado = Cliente("Pedro", "empleado@empleado", "Programador");
-empleado.mostrarNombre();
+// cliente.mostrarNombre();
+// const empleado = Cliente("Pedro", "empleado@empleado", "Programador");
+// empleado.mostrarNombre();
+
+// const num = Number(prompt("Ingresa un número:"));
+// (num % 2 === 0) ? console.log(`El número ${num} es par`) : console.log(`El número ${num} es impar`);
+
+
+// const num = Number(prompt("Enter a number:"));
+// if (num % 2 === 0) {
+//   console.log(`The number ${num} is even.`);
+// } else {
+//   console.log(`The number ${num} is odd.`);
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//   int num;
+//   cout << "Enter a number: ";
+//   cin >> num;
+//   if (num % 2 == 0) {
+//     cout << "The number " << num << " is even." << endl;
+//   } else {
+//     cout << "The number " << num << " is odd." << endl;
+//   }
+//   return 0;
+// }
