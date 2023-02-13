@@ -36,8 +36,11 @@
 // const empleado = Cliente("Pedro", "empleado@empleado", "Programador");
 // empleado.mostrarNombre();
 
-// const num = Number(prompt("Ingresa un número:"));
-// (num % 2 === 0) ? console.log(`El número ${num} es par`) : console.log(`El número ${num} es impar`);
+const num = Number(prompt("Ingresa un número:"));
+
+(num % 2 === 0)
+     ? console.log(`El número ${num} es par`)
+     : console.log(`El número ${num} es impar`);
 
 
 // const num = Number(prompt("Enter a number:"));
@@ -47,17 +50,3 @@
 //   console.log(`The number ${num} is odd.`);
 // }
 
-// #include <iostream>
-// using namespace std;
-
-// int main() {
-//   int num;
-//   cout << "Enter a number: ";
-//   cin >> num;
-//   if (num % 2 == 0) {
-//     cout << "The number " << num << " is even." << endl;
-//   } else {
-//     cout << "The number " << num << " is odd." << endl;
-//   }
-//   return 0;
-// }
